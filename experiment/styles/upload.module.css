@@ -1,0 +1,70 @@
+.uploadContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formContainer{
+    width: 900px;
+    min-height: 500px;
+    box-shadow: 1px 0 6px rgb(0 0 0 / 10%);
+    border-radius: 0.625rem;
+    background: rgba(117,122,155,.15);
+    border: 0.0625rem solid rgba(255,255,255,.5);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 24px;
+}
+
+.lineBlock{
+    display: block;
+    margin-top: 37px !important;
+}
+
+.inputStyle{
+    border-radius: 0.625rem;
+    font-size: .8125rem;
+    font-weight: 400;
+    background: rgba(29,32,39,.85);
+    border: 0.0625rem solid #757a9b;
+    color: #fff;
+    padding-left: 6px;
+    vertical-align: middle;
+}
+
+.buttonStyle{
+    border-radius: 1.5rem !important;
+    border-top-left-radius: 1.5rem !important;
+    border-top-right-radius: 1.5rem !important;
+    border-bottom-right-radius: 1.5rem !important;
+    border-bottom-left-radius: 1.5rem !important;
+    color: white !important;
+    height: 2.1875rem !important;
+    cursor: pointer !important;
+}
+
+.avatarStyle{
+    width: 200px;
+    height: 200px;
+    margin-top: 12px;
+}
+.videoStyle{
+    margin-top: 12px;
+}
+
+.loadingContainer{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    background: rgba(29,32,39,.35);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
