@@ -23,6 +23,15 @@ function Page() {
     overrides: { from: address }
   })
 
+  const { data: isApply } = useContractRead({
+    address: ACCOUNT_CONTRACT_ADDRESS,
+    abi: accountAbi,
+    functionName: 'accounts',
+    watch: true,
+    args: [ address ],
+    overrides: { from: address }
+  })
+
   // contract write
   const { config: configAdd } = usePrepareContractWrite({
     address: ACCOUNT_CONTRACT_ADDRESS,
@@ -70,7 +79,7 @@ function Page() {
         <div className={styles.buttonContainer} >
           <Connect />
           {
-            registerLimit && address && <Button variant="outlined" title="apply for joining(申请入驻)" className={styles.applyButton}  onClick={()=>{writeAdd?.()}}>apply for joining(申请入驻)</Button>
+            registerLimit && address && <Button variant="outlined" disabled={isApply} title="apply for joining(申请入驻)" className={styles.applyButton}  onClick={()=>{writeAdd?.()}}>apply for joining(申请入驻)</Button>
           }
           {/* 测试时候用 */}
           {

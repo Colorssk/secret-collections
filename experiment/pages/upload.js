@@ -82,7 +82,7 @@ const upload = () => {
         form.append('name', name);
         form.append('descriptions', descriptions);
         setLoading(true);
-        const res = await fetch('http://127.0.0.1:8080/upload', {
+        const res = await fetch('https://server-ashen-seven.vercel.app/upload', {
             method: "POST",
             body: form
         });
