@@ -105,7 +105,7 @@ const NftPage = () => {
                     <CardContent>
                         <Typography variant="body2" color="text.secondary" className={style.infoContent} title={item?.nftInfo}>
                             {item?.nftInfo}
-                            <a href={filterLink(item?.resourceVideo)} className={style.linkStyle} target="_blank" >secret video link</a>
+                            <a href={filterLink(item?.resourceVideo)} className={style.linkStyle} target="_blank" rel="noreferrer">secret video link</a>
                         </Typography>
                     </CardContent>
                 </CardActionArea>
