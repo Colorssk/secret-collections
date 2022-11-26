@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 import { useAccount  } from 'wagmi'
 import { useRouter } from 'next/router'
 import Button from '@mui/material/Button';
-import style from '../../styles/navbar.module.css'
+import style from '../styles/navbar.module.css'
 export default function Navbar({ children }) {
     const router = useRouter()
     const { isConnected } = useAccount()

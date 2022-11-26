@@ -1,5 +1,5 @@
 
-import Layout from './components/layout.js'
+import Layout from '../components/layout.js'
 import '../styles/globals.css'
 import NextHead from 'next/head'
 import { useState, useEffect } from 'react'
