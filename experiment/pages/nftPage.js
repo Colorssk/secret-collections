@@ -11,7 +11,7 @@ import pg1 from "./imgs/pg1.png"
 import { NFT_COLLECTIONS_ADDRESS, collectionsAbi } from '../config/contract'
 import style from "../styles/nftPage.module.css"
 
-const nftPage = () => {
+const NftPage = () => {
     const [ nftInfos, setNftInfos ] = useState([])
     const router = useRouter()
     const { address, isConnected } = useAccount()
@@ -129,4 +129,4 @@ const nftPage = () => {
         </div>
     )
 }
-export default nftPage
+export default NftPage

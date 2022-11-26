@@ -6,7 +6,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { ethers } from "ethers";
 import { useRouter } from 'next/router'
 import style from '../styles/upload.module.css';
-const upload = () => {
+const Upload = () => {
     const [ imgSrc, setimgSrc ] = useState(null);
     const [ avatar, setAvatar ] = useState(null);
     const [ avatarFile, setAvatarFile ] = useState(null);
@@ -139,4 +139,4 @@ const upload = () => {
     )
 }
 
-export default upload
+export default Upload
