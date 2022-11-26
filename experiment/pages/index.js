@@ -3,7 +3,7 @@ import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 import styles from '../styles/home.module.css'
-import { Connect } from './components'
+import Connect from './components/connect'
 import { accountAbi, ACCOUNT_CONTRACT_ADDRESS } from '../config/contract'
 function Page() {
   const { address, isConnected } = useAccount()

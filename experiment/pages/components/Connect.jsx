@@ -1,7 +1,7 @@
 import { useAccount, useConnect, useDisconnect  } from 'wagmi'
 import Button from '@mui/material/Button';
 
-export function Connect() {
+const Connect = () => {
   const { connector, isConnected } = useAccount()
   const { connect, connectors, error, isLoading, pendingConnector } = useConnect()
   const { disconnect } = useDisconnect()
@@ -30,3 +30,5 @@ export function Connect() {
     </div>
   )
 }
+
+export default Connect
