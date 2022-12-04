@@ -22,8 +22,8 @@ const Upload = () => {
         address: NFT_COLLECTIONS_ADDRESS,
         abi: collectionsAbi,
         functionName: 'mintNFT',
-        overrides: { from: address, value: ethers.utils.parseUnits('10000000', 'gwei') },
-        args: [address, ''],
+        overrides: { from: address, value: ethers.utils.parseUnits('10000000', 'gwei'), gasLimit: 50000 },
+        args: [address, '', ''],
     })
     const { write: writeMint } = useContractWrite(configMint)
     // event listerner
@@ -33,7 +33,7 @@ const Upload = () => {
         eventName: 'MintNFT',
         listener(newId, blockInfo) {
           alert(`${address}:mint successfully,newId:${newId}`);
-          router.push('/nftPage');
+          router.push('/ownNft');
         }
     })
 
@@ -72,7 +72,6 @@ const Upload = () => {
                 break;
         }
     }
-
     const onHandleSubmit = async (e) => {
         e.preventDefault();
         console.log(e.target)
@@ -87,11 +86,12 @@ const Upload = () => {
             body: form
         });
         const data = await res.json()
-        if(!data || !data?.data || !data?.data?.IpfsHash){
+        if( !data?.data?.IpfsHash || !data?.briefData?.IpfsHash){
            alert('上传失败!')
         } else {
             try {
-                await writeMint?.({recklesslySetUnpreparedArgs: [address, data?.data?.IpfsHash]});
+                console.log('调用mint方法', [address, data?.data?.IpfsHash, data?.briefData?.IpfsHash])
+                await writeMint?.({recklesslySetUnpreparedArgs: [address, data?.data?.IpfsHash, data?.briefData?.IpfsHash]});
             } catch (error) {
                 console.log('execute failed');
             }

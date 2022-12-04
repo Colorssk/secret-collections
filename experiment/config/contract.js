@@ -1,4 +1,4 @@
-export const ACCOUNT_CONTRACT_ADDRESS = "0x3E5BEa9E63D6bbd6D4c96769CB15413E14C0Ea14"
+export const ACCOUNT_CONTRACT_ADDRESS = "0x8878b3b716CdAa6e97f1B159B068b8Dfbb3f1D5b"
 export const accountAbi = [
   {
     "inputs": [
@@ -179,7 +179,7 @@ export const accountAbi = [
   }
 ]
 
-export const NFT_COLLECTIONS_ADDRESS = "0x92aAB776Dd67096ade06bcfc11d931A939ec3056";
+export const NFT_COLLECTIONS_ADDRESS = "0x7420Ba2e9E1db1a68371Cc00D7f87b9B6957F215";
 export const collectionsAbi = [
   {
     "inputs": [
@@ -280,6 +280,25 @@ export const collectionsAbi = [
       {
         "indexed": true,
         "internalType": "address",
+        "name": "payer",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "Purchase",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
         "name": "from",
         "type": "address"
       },
@@ -349,6 +368,19 @@ export const collectionsAbi = [
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "_trans_price",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
         "internalType": "address",
@@ -375,6 +407,30 @@ export const collectionsAbi = [
       }
     ],
     "name": "balanceOf",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "collectionsIn",
     "outputs": [
       {
         "internalType": "uint256",
@@ -424,6 +480,19 @@ export const collectionsAbi = [
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "getCollections",
+    "outputs": [
+      {
+        "internalType": "string[]",
+        "name": "",
+        "type": "string[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
         "internalType": "address",
@@ -457,6 +526,11 @@ export const collectionsAbi = [
       {
         "internalType": "string",
         "name": "_tokenURI",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_briefTokenURI",
         "type": "string"
       }
     ],
@@ -508,6 +582,43 @@ export const collectionsAbi = [
       }
     ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "payerLists",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_pay_tokenUrl",
+        "type": "string"
+      }
+    ],
+    "name": "purchase",
+    "outputs": [],
+    "stateMutability": "payable",
     "type": "function"
   },
   {
@@ -602,6 +713,32 @@ export const collectionsAbi = [
   {
     "inputs": [
       {
+        "internalType": "uint256",
+        "name": "__trans_price",
+        "type": "uint256"
+      }
+    ],
+    "name": "setTransFee",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "showAllBriefNFTExcludeOwner",
+    "outputs": [
+      {
+        "internalType": "string[]",
+        "name": "",
+        "type": "string[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "bytes4",
         "name": "interfaceId",
         "type": "bytes4"
@@ -653,22 +790,17 @@ export const collectionsAbi = [
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      },
-      {
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
       }
     ],
-    "name": "tokenIds",
+    "name": "tokenIdToUrlBrief",
     "outputs": [
       {
-        "internalType": "uint256",
+        "internalType": "string",
         "name": "",
-        "type": "uint256"
+        "type": "string"
       }
     ],
     "stateMutability": "view",
@@ -764,6 +896,25 @@ export const collectionsAbi = [
     "name": "transferOwnership",
     "outputs": [],
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "name": "urlBriefToTokenId",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {

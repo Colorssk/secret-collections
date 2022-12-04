@@ -35,15 +35,14 @@
     text-decoration: underline;
     cursor: pointer;
 }
-/* 
+
 .buyInfo{
     font-size: 14px;
     display: inline-block;
     padding: 0 7px;
-    border-right: 1px solid black;
     color: white;
 }
-
+/* 
 .sellInfo{
     font-size: 14px;
     display: inline-block;

@@ -27,20 +27,12 @@ const NftPage = () => {
         address,
         watch: true,
     })
-    const { data: owner } = useContractRead({
-        address: NFT_COLLECTIONS_ADDRESS,
-        abi: collectionsAbi,
-        functionName: 'owner',
-        watch: true,
-        overrides: { from: address }
-    })
     const { data: nfts } = useContractRead({
         address: NFT_COLLECTIONS_ADDRESS,
         abi: collectionsAbi,
-        functionName: 'getAllNftByAddress',
+        functionName: 'getCollections',
         watch: true,
         overrides: { from: address },
-        args: [ address ],
         onSuccess: (nfts) => {
             const defaultUrl = 'https://ipfs.io/ipfs/';
             const promiseList = []
@@ -71,25 +63,7 @@ const NftPage = () => {
             })   
         },
     })
-    
-    // contract write
-    const { config: configWithdraw } = usePrepareContractWrite({
-        address: NFT_COLLECTIONS_ADDRESS,
-        abi: collectionsAbi,
-        functionName: 'withdraw',
-        overrides: { from: address },
-    })
-    const { write: writeWithdraw } = useContractWrite(configWithdraw)
 
-    // event listerner
-    useContractEvent({
-        address: NFT_COLLECTIONS_ADDRESS,
-        abi: collectionsAbi,
-        eventName: 'Withdrawal',
-        listener(owner, value) {
-          alert(`${owner}: you withdraw(value: ${value}) successfully`);
-        }
-    })
 
     const filterLink = (linkOrHash) => {
         const defaultUrl = 'https://ipfs.io/ipfs/';
@@ -115,9 +89,7 @@ const NftPage = () => {
     return (
         <div className={style.nftPageContainer}>
             <div className={style.header}>
-                <div>当前账户: {address}; 账户余额:{Number(ethers.utils.formatEther(balance?.data?.value ?? 0) ?? 0)}(ETH)
-                    {String(owner) === String(address) && <a className={style.withdrawStyle} onClick={()=>{writeWithdraw?.()}}>提款</a>}
-                </div> 
+                <div>当前账户: {address}; 账户余额:{Number(ethers.utils.formatEther(balance?.data?.value ?? 0) ?? 0)}</div> 
             </div>
             <div className={style.listContainer}>
                 {

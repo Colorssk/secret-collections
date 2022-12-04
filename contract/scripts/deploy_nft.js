@@ -3,10 +3,10 @@ const { ethers } = require("hardhat");
 async function main() {
 
   const NfTCollectionsContact = await ethers.getContractFactory("Nftcollections");
-  const accountContractAddress = '0x3E5BEa9E63D6bbd6D4c96769CB15413E14C0Ea14'
+  const accountContractAddress = '0x8878b3b716CdAa6e97f1B159B068b8Dfbb3f1D5b'
   const nftContract = await NfTCollectionsContact.deploy(accountContractAddress);
   await nftContract.deployed();
-  // 0x92aAB776Dd67096ade06bcfc11d931A939ec3056
+  // 0x7420Ba2e9E1db1a68371Cc00D7f87b9B6957F215  / 0xEFaBC291A4A3Dc1466Ee73A5CE39096948b66f06
   console.log("Nftcollections Contract Address:", nftContract.address);
 }
 main()

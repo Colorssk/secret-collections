@@ -16,8 +16,16 @@ export default function Navbar({ children }) {
             link: '/upload'
         },
         {
-            title: 'NFT MARKETPLACE',
-            link: '/nftPage'
+            title: 'OWN NFTS',
+            link: '/ownNft'
+        },
+        {
+            title: 'MARKET',
+            link: '/market'
+        },
+        {
+            title: 'COLLECTIOS',
+            link: '/collections'
         }
     ]
     const next = (link) => {

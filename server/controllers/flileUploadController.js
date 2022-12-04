@@ -36,25 +36,34 @@ const uploadFiles = async (req, res) => {
                 if(result && result.length === 2){
                     const ipfsBody = {};
                     ipfsBody.image = baseUrl + result[0]?.IpfsHash;
-                    ipfsBody.resourceVideo = baseUrl + result[1]?.IpfsHash;
                     ipfsBody.name = req.body?.name;
                     ipfsBody.description = req.body?.descriptions;
-                    const jsonInfoOptions = (stream, index) => {
+                    const options = {
+                        pinataMetadata: {
+                            name: req.body?.name + String(new Date().getTime()) + '-brief',
+                        }
+                    };
+                    pinata.pinJSONToIPFS(ipfsBody, options).then((resultBrief) => {
+                        ipfsBody.resourceVideo = baseUrl + result[1]?.IpfsHash;
                         const options = {
                             pinataMetadata: {
-                                name: req.body?.name + String(new Date().getTime()),
+                                name: req.body?.name + String(new Date().getTime()) + '-detail',
                             }
                         };
-                        return pinata.pinFileToIPFS(stream, options)
-                    }
-                    pinata.pinJSONToIPFS(ipfsBody, jsonInfoOptions).then((result) => {
-                        console.log(result);
-                        return res.status(200).json({ message: '文件上传成功', data: result})
+                        pinata.pinJSONToIPFS(ipfsBody, options).then((resultDetail) => {
+                            console.log(resultDetail);
+                            return res.status(200).json({ message: '文件上传成功', data: resultDetail, briefData: resultBrief})
+                        }).catch((err) => {
+                            return res.status(500).send({
+                                message: `最终表单信息上传失败: ${err}`
+                            });
+                        });
                     }).catch((err) => {
                         return res.status(500).send({
-                            message: `最终表单信息上传失败: ${err}`
+                            message: `简单表单信息上传失败: ${err}`
                         });
                     });
+                   
                 }
             }).catch((err) => {
                 return res.status(500).send({
