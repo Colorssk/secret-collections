@@ -37,14 +37,14 @@ function Page() {
     address: ACCOUNT_CONTRACT_ADDRESS,
     abi: accountAbi,
     functionName: 'addMember',
-    overrides: { from: address,  gasLimit: 50000 }
+    overrides: { from: address,  gasLimit: 500000 }
   })
 
   const { config: configDel } = usePrepareContractWrite({
     address: ACCOUNT_CONTRACT_ADDRESS,
     abi: accountAbi,
     functionName: 'delMember',
-    overrides: { from: address,  gasLimit: 50000 }
+    overrides: { from: address,  gasLimit: 500000 }
   })
 
   const { write: writeAdd } = useContractWrite(configAdd)
